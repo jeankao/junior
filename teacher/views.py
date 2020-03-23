@@ -29,6 +29,7 @@ import json
 from django.utils.http import urlquote
 from django.conf import settings
 from wsgiref.util import FileWrapper
+import re
 from io import BytesIO
 
 def filename_browser(request, filename):
