@@ -8,6 +8,7 @@ from datetime import datetime, timedelta
 class Classroom(models.Model):
     Lesson_CHOICES = [		                
         (1, '※基礎程式設計：使用Scratch3.X'),                
+        (2, '※進階程式設計：使用Scratch3.X'),                    
 		]	
 		
     Progress_CHOICES = [				
@@ -22,6 +23,7 @@ class Classroom(models.Model):
 
     LessonShort_CHOICES = [	           
         (1, 'Scratch-7'),                                     
+        (2, 'Scratch-8'),       
 		]		
 		
     # 班級名稱

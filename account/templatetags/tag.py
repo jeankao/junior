@@ -151,7 +151,7 @@ def unit_name(unit, lesson):
 @register.filter
 def lesson_download(lesson, index):
         lesson_dict = {}
-        if lesson == 1:
+        if lesson == 1 or lesson == 2:
             for unit1 in lesson_list[int(lesson)-1][1]:
                 for assignment in unit1[1]:
                     lesson_dict[assignment[2]] = assignment[1]

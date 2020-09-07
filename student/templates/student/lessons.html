@@ -61,6 +61,31 @@
     <div class="col-md-6" align=right><a href="https://scratch.mit.edu/projects/editor/" target="_blank"><img src="/static/images/online.png"></a></div></p>
     </div>
   </div>
- 
+{% elif subject_id == 2 %}
+  <div class="sectiontitle">
+    <h1 class="heading"> <i class="fa fa-universal-access" aria-hidden="true"></i> {{lesson_list.1.0}} </h6>
+      何榮桂、高慧君著 翰林出版
+  </div>
+  <hr>
+  <BR>
+  <div class="row">
+    {% for unit in lesson_list.1.1 %}
+    <div class="col-md-3">
+      <h4 class="nospace heading">{{unit.0}}({{unit.1|length}}) <i class="fa fa-hand-o-left" aria-hidden="true"></i> </h4>
+      <ul class="nospace">
+        {% for assignment in unit.1 %}
+        <li><a href="/student/lesson/2/{{forloop.parentloop.counter}}/{{assignment.2}}">{{assignment.0}}{{workfiles}}{% if assignment|last %}<img src="/static/images/done.png">{% endif %}</a></li>
+        {% endfor %}
+      </ul>
+      <p></p>
+    </div>
+    {% endfor %}    
+  </div>
+  <hr>
+  <div class="row">
+  <div class="col-md-6"><!--本課程請搭配翰林版資訊科技課本使用<--></div>
+  <div class="col-md-6" align=right><a href="https://scratch.mit.edu/projects/editor/" target="_blank"><img src="/static/images/online.png"></a></div></p>
+  </div>
+</div>
 {% endif %}
 {% endblock %}

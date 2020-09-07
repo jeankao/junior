@@ -202,7 +202,7 @@ def lessons(request, subject_id):
         del lesson_list[:]
         reset()   
         works = Work.objects.filter(typing=0, user_id=request.user.id, lesson=subject_id).order_by("-id")	
-        if subject_id == 1 :
+        if subject_id == 1 or subject_id == 2 :
             for unit, unit1 in enumerate(lesson_list[int(subject_id)-2][1]):
                 for index, assignment in enumerate(unit1[1]):
                     if len(works) > 0 :
