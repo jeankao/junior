@@ -310,10 +310,10 @@ def work(request, typing, classroom_id):
 	
     if typing == 0:
         lesson = Classroom.objects.get(id=classroom_id).lesson
-        if lesson == 1:
+        if lesson == 1 or lesson == 2:
             assignments = lesson_list      
             unit_count = 1
-            for unit in lesson_list[int(lesson)-2][1]:
+            for unit in lesson_list[int(lesson)-1][1]:
                 for assignment in unit[1]:
                     try:
                         group_id = WorkGroup.objects.get(classroom_id=classroom_id, index=assignment[2], typing=typing).group_id
@@ -615,8 +615,8 @@ def progress(request, typing, classroom_id, group_id):
     enroll_group = []
     enroll_group = map(lambda a: a.enroll_id, enroll_groups)
     if typing == 0:		
-        if lesson == 1:
-            for unit in lesson_list[int(classroom.lesson)-2][1]:
+        if lesson == 1 or lesson == 2 :
+            for unit in lesson_list[int(classroom.lesson)-1][1]:
                 for assignment in unit[1]:
                     lesson_dict[assignment[2]] = assignment[0]
         for enroll in enrolls:
