@@ -203,7 +203,7 @@ def lessons(request, subject_id):
         reset()   
         works = Work.objects.filter(typing=0, user_id=request.user.id, lesson=subject_id).order_by("-id")	
         if subject_id == 1 or subject_id == 2 :
-            for unit, unit1 in enumerate(lesson_list[int(subject_id)-2][1]):
+            for unit, unit1 in enumerate(lesson_list[int(subject_id)-1][1]):
                 for index, assignment in enumerate(unit1[1]):
                     if len(works) > 0 :
                         sworks = list(filter(lambda w: w.index==assignment[2], works))
@@ -212,7 +212,7 @@ def lessons(request, subject_id):
                         else :
                             lesson_list[int(subject_id)-1][1][unit][1][index].append(False)
                     else :
-                        lesson_list[int(subject_id)-2][1][unit][1][index].append(False)         
+                        lesson_list[int(subject_id)-1][1][unit][1][index].append(False)         
         return render(request, 'student/lessons.html', {'subject_id': subject_id, 'lesson_list':lesson_list})
 
 # 課程內容
