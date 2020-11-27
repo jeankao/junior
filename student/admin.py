@@ -5,3 +5,4 @@ from .models import *
 admin.site.register(Enroll)
 admin.site.register(StudentGroup)
 admin.site.register(WorkGroup)
+admin.site.register(Work)
