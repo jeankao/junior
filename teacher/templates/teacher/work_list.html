@@ -12,6 +12,7 @@
                     使用分組 
                 </td>  
                 <td colspan=2>功能</td>		
+                --{{workgroups}}--
 		{% for form in formset %}
             <tr>
             <td>{{forloop.counter}}){{classroom.lesson|lesson_name:form.index.value}}</td>

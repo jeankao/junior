@@ -143,13 +143,12 @@ class ClassroomCreate(TeacherRequiredMixin, CreateView):
         lesson = classroom.lesson
         queryset = []		
         works = Work.objects.filter(user_id=self.request.user.id, lesson=lesson).order_by("id")		
-        if lesson == 1 :
-            for unit in lesson_list[int(lesson)-2][1]:
-                for assignment in unit[1]:
-                    queryset.append(assignment)     
-            for assignment in queryset:
-                workgroup = WorkGroup(classroom_id=classroom.id, index=assignment[2])
-                workgroup.save()
+        for unit in lesson_list[int(lesson)-1][1]:
+            for assignment in unit[1]:
+                queryset.append(assignment)     
+        for assignment in queryset:
+            workgroup = WorkGroup(classroom_id=classroom.id, index=assignment[2])
+            workgroup.save()
         return valid
     
 class ClassroomUpdate(ClassroomTeacherRequiredMixin, UpdateView):
@@ -1147,7 +1146,7 @@ def work_list(request, classroom_id):
         workgroups = WorkGroup.objects.filter(classroom_id=classroom_id, typing=0).order_by("index")
         groups = ClassroomGroup.objects.filter(classroom_id=classroom_id)
         formset = GroupModelFormset(queryset=workgroups)		
-    return render(request, 'teacher/work_list.html', {'formset': formset, 'classroom':classroom, 'groups': groups})		
+    return render(request, 'teacher/work_list.html', {'formset': formset, 'classroom':classroom, 'groups': groups, 'workgroups':workgroups})		
 	
 def work_groupset(request, typing, classroom_id):	
     if request.method == 'POST':
@@ -4036,3 +4035,18 @@ def team_group_set(request):
     teamclass.group = int(group)
     teamclass.save()    
     return JsonResponse({'status':team_id}, safe=False)  
+
+def redefine(request):
+    classrooms = Classroom.objects.filter(lesson=2)
+    for classroom in classrooms:
+        # 指定作業分組
+        lesson = classroom.lesson
+        queryset = []		
+        works = Work.objects.filter(user_id=request.user.id, lesson=lesson).order_by("id")		
+        for unit in lesson_list[lesson-1][1]:
+            for assignment in unit[1]:
+                queryset.append(assignment)     
+        for assignment in queryset:
+            workgroup = WorkGroup(classroom_id=classroom.id, index=assignment[2])
+            workgroup.save()
+        return redirect("/")
