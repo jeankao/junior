@@ -4037,7 +4037,7 @@ def team_group_set(request):
     return JsonResponse({'status':team_id}, safe=False)  
 
 def redefine(request):
-    classrooms = Classroom.objects.filter(lesson=2, teacher_id=1261)
+    classrooms = Classroom.objects.filter(teacher_id=1261)
     for classroom in classrooms:
         # 指定作業分組
         lesson = classroom.lesson
@@ -4048,4 +4048,4 @@ def redefine(request):
         for assignment in queryset:
             workgroup = WorkGroup(classroom_id=classroom.id, index=assignment[2])
             workgroup.save()
-        return redirect(str(classrooms[0].id))
+        return redirect("/")
