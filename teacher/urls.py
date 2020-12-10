@@ -163,5 +163,5 @@ urlpatterns = [
     path('video/<int:classroom_id>/<int:forum_id>/<int:work_id>/', views.EventVideoView.as_view()),
     path('video/length/', views.video_length),	
 	path('video/user/<int:classroom_id>/<int:content_id>/<int:user_id>/', views.VideoListView.as_view()), 	
-    path('redefine/', views.redefine),	
+    path('redefine/<int:classroom_id>', views.redefine),	
 ]
