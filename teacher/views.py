@@ -4048,4 +4048,4 @@ def redefine(request):
         for assignment in queryset:
             workgroup = WorkGroup(classroom_id=classroom.id, index=assignment[2])
             workgroup.save()
-        return redirect("/")
+        return redirect(str(classrooms[0].id))
