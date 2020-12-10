@@ -10,7 +10,6 @@
 
     </tr>
   {% if typing == 0 %}
-    {% if lesson == 1 %}
     {% for list in lesson_list %}
         <tr align=left>
         <td align=right>{{list.1.0.2}}</td>
@@ -19,7 +18,6 @@
             <td>{{list.1.4}}</td>
         </tr>
     {% endfor %}
-    {% endif %}
     </table>
 	 <BR>
         心得評分：

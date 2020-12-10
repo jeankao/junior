@@ -1477,10 +1477,9 @@ def check(request, typing, unit, user_id, classroom_id):
     works = Work.objects.filter(typing=typing, user_id=user_id, lesson=lesson)
     enroll = Enroll.objects.get(student_id=user_id, classroom_id=classroom_id)
     if typing == 0:
-        if lesson == 1:
-             for unit1 in lesson_list[int(lesson)-2][1]:
-                for assignment in unit1[1]:
-                    lesson_dict[assignment[2]] = [assignment]
+        for unit1 in lesson_list[int(lesson)-1][1]:
+            for assignment in unit1[1]:
+                lesson_dict[assignment[2]] = [assignment]
     else :
         assignments = TWork.objects.filter(classroom_id=classroom_id)
         for assignment in assignments:
