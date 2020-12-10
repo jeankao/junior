@@ -4040,7 +4040,7 @@ def redefine(request, classroom_id):
     classroom = Classroom.objects.get(id=classroom_id)
     # 指定作業分組
     queryset = []		
-     for unit in lesson_list[classroom.lesson-1][1]:
+    for unit in lesson_list[classroom.lesson-1][1]:
         for assignment in unit[1]:
             queryset.append(assignment)     
     for assignment in queryset:
