@@ -355,10 +355,9 @@ def work(request, typing, classroom_id):
 def work_download(request, typing, lesson, index, user_id, workfile_id):
     lesson_dict = OrderedDict()
     if typing == 0:
-        if lesson == 1:
-            for unit in lesson_list[int(lesson)-1][1]:
-                for assignment in unit[1]:
-                    lesson_dict[assignment[2]] = assignment[0]
+        for unit in lesson_list[int(lesson)-1][1]:
+            for assignment in unit[1]:
+                lesson_dict[assignment[2]] = assignment[0]
     elif typing == 1:
         try:
             assignment = TWork.objects.get(id=index)
