@@ -29,7 +29,7 @@ class Classroom(models.Model):
     # 班級名稱
     name = models.CharField(max_length=30, verbose_name='班級名稱')
     # 課程名稱
-    lesson = models.IntegerField(default=2, choices=Lesson_CHOICES, verbose_name='課程名稱')			
+    lesson = models.IntegerField(default=1, choices=Lesson_CHOICES, verbose_name='課程名稱')			
     # 選課密碼
     password = models.CharField(max_length=30, verbose_name='選課密碼')
     # 授課教師

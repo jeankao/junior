@@ -3,7 +3,6 @@
 {% block title %} Teachers {% endblock %}
 {% block content %}
         班級名稱：{{ classroom_name }}<BR>
-        {% if lesson == 1 %}
         <table class="table">
         <tr>   
             <td>姓名</td>
@@ -18,8 +17,4 @@
             </tr>
         {% endfor %}
         </table>
-
-        {% else %}
-          1234
-        {% endif %}
 {% endblock %}
